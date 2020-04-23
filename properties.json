@@ -1,0 +1,25 @@
+{
+    "flowrate": 10,
+    "groups": {
+        "1": {
+            "area": 150,
+            "crop_factor": 1.2,
+            "requirement_left" : 0
+        },
+        "2": {
+            "area": 50,
+            "crop_factor": 0.8,
+            "requirement_left" : 0
+        },
+        "3": {
+            "area": 50,
+            "crop_factor": 1,
+            "requirement_left" : 0
+        },
+        "4": {
+            "area": 250,
+            "crop_factor": 1.2,
+            "requirement_left" : 0
+        }
+    }
+}
