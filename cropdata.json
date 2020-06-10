@@ -5,8 +5,8 @@
         "end_kc": "0.69",
         "initial_length": "20",
         "interpolate_length": "30",
-        "mid_length": "40",
-        "end_length": "12\n"
+        "mid_length": "40",1
+        "end_length": "12"
     },
     "Broccoli": {
         "initial_kc": "0.7",
@@ -15,7 +15,7 @@
         "initial_length": "35",
         "interpolate_length": "45",
         "mid_length": "40",
-        "end_length": "15\n"
+        "end_length": "15"
     },
     "Cabbage": {
         "initial_kc": "0.7",
@@ -24,7 +24,7 @@
         "initial_length": "40",
         "interpolate_length": "60",
         "mid_length": "50",
-        "end_length": "15\n"
+        "end_length": "15"
     },
     "Cassava": {
         "initial_kc": "0.3",
@@ -33,7 +33,7 @@
         "initial_length": "20",
         "interpolate_length": "40",
         "mid_length": "90",
-        "end_length": "60\n"
+        "end_length": "60"
     },
     "Cauliflower": {
         "initial_kc": "0.7",
@@ -42,7 +42,7 @@
         "initial_length": "35",
         "interpolate_length": "50",
         "mid_length": "40",
-        "end_length": "15\n"
+        "end_length": "15"
     },
     "Celery": {
         "initial_kc": "0.7",
@@ -51,7 +51,7 @@
         "initial_length": "25",
         "interpolate_length": "40",
         "mid_length": "95",
-        "end_length": "20\n"
+        "end_length": "20"
     },
     "Common bean": {
         "initial_kc": "0.5",
@@ -60,7 +60,7 @@
         "initial_length": "15",
         "interpolate_length": "25",
         "mid_length": "25",
-        "end_length": "10\n"
+        "end_length": "10"
     },
     "Cucumber": {
         "initial_kc": "0.6",
@@ -69,7 +69,7 @@
         "initial_length": "20",
         "interpolate_length": "30",
         "mid_length": "40",
-        "end_length": "15\n"
+        "end_length": "15"
     },
     "Eggplant": {
         "initial_kc": "0.6",
@@ -78,7 +78,7 @@
         "initial_length": "30",
         "interpolate_length": "40",
         "mid_length": "40",
-        "end_length": "20\n"
+        "end_length": "20"
     },
     "Hot pepper": {
         "initial_kc": "0.47",
@@ -87,7 +87,7 @@
         "initial_length": "15",
         "interpolate_length": "30",
         "mid_length": "50",
-        "end_length": "26\n"
+        "end_length": "26"
     },
     "Lettuce": {
         "initial_kc": "0.7",
@@ -96,7 +96,7 @@
         "initial_length": "20",
         "interpolate_length": "30",
         "mid_length": "15",
-        "end_length": "10\n"
+        "end_length": "10"
     },
     "Okra": {
         "initial_kc": "0.4",
@@ -105,7 +105,7 @@
         "initial_length": "19",
         "interpolate_length": "23",
         "mid_length": "10",
-        "end_length": "55\n"
+        "end_length": "55"
     },
     "Pineapple": {
         "initial_kc": "0.5",
@@ -114,7 +114,7 @@
         "initial_length": "60",
         "interpolate_length": "120",
         "mid_length": "600",
-        "end_length": "10\n"
+        "end_length": "10"
     },
     "Pumpkin": {
         "initial_kc": "0.5",
@@ -123,7 +123,7 @@
         "initial_length": "20",
         "interpolate_length": "30",
         "mid_length": "30",
-        "end_length": "20\n"
+        "end_length": "20"
     },
     "Spinach": {
         "initial_kc": "0.7",
@@ -132,7 +132,7 @@
         "initial_length": "20",
         "interpolate_length": "20",
         "mid_length": "15",
-        "end_length": "5\n"
+        "end_length": "5"
     },
     "Sweet peppers": {
         "initial_kc": "0.6",
@@ -141,7 +141,7 @@
         "initial_length": "25",
         "interpolate_length": "35",
         "mid_length": "40",
-        "end_length": "20\n"
+        "end_length": "20"
     },
     "Sweet potato": {
         "initial_kc": "0.5",
@@ -150,7 +150,7 @@
         "initial_length": "15",
         "interpolate_length": "30",
         "mid_length": "50",
-        "end_length": "30\n"
+        "end_length": "30"
     },
     "Tomato": {
         "initial_kc": "0.6",
@@ -159,6 +159,15 @@
         "initial_length": "30",
         "interpolate_length": "40",
         "mid_length": "40",
-        "end_length": "25\n"
+        "end_length": "25"
+    }
+    "other": {
+        "initial_kc": "0.8",
+        "mid_kc": "1",
+        "end_kc": "1.1",
+        "initial_length": "60",
+        "interpolate_length": "60",
+        "mid_length": "60",
+        "end_length": "60"
     }
 }

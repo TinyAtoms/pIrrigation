@@ -32,11 +32,8 @@ user_input = input('>>> ')
         crop_name = 'something' #import from db based on index number
         print('What is the distance between individual crops?')
         d = input('>>> ')
-
         print('In what growth period is your crop?')
         print('Choose from')
-
-
         print('At what time should your crop be irrigated? [hh:mm] If no answer is supplied, the default time will be configured')
         user_input = input('>>> ')
         if user_input == '':
