@@ -41,6 +41,6 @@ print("Dumb implementation", coefficient)
 sns.lineplot(days, pan_et, label="measured(pan)")
 sns.lineplot(days, ET, label="FAO")
 sns.lineplot(days, res, label="predicted ET(Ordinary Least Squares)")
-# sns.lineplot(days, res1, label="predicted ET(own 'regrassion')") # removed for clarity's sake
+# sns.lineplot(days, res1, label="predicted ET(own 'regrassion')") # removed for clarity's sakeg
 plt.ylim([0,20])
 plt.show()
