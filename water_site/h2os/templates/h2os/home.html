@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Watersite: H2OS home</title>
+    </head>
+    <body>
+        <h1>This is the main overview of your plants</h1>
+        <p>Welcome to this page.</p>
+        <div class = 'groups'>
+            {% for group in groups %}
+            <div class = 'group'> 
+                <h2>{{group.loc_id}}. {{group.plant_name}}</h2>
+                <p>This plant is located at patch number {{group.loc_id}}.<br>
+                    This plant is in growth stage {{group.growth_stage}} on day {{group.growth_day}}.<br>
+                    Last watered at {{group.last_irrigated}} for the amount of x liters. <br>
+                    Irrigation times are set at {{group.water_t1}} and {{group.water_t2}} .
+                </p>
+                
+
+            </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

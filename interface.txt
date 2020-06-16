@@ -1,3 +1,0 @@
-
-1. page to view groups and add 1 groups
-2. detailview
