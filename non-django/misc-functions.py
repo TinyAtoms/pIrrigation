@@ -4,8 +4,6 @@ import statsmodels.api as sm
 from numpy import array
 
 
-
-
 def crop_factor(crop, day):
     '''
     Returns the crop factor(Kc) of a given crop and how long it's in the ground.
@@ -51,6 +49,7 @@ def measured_evaporation():
     Make it return an ERROR when it detects autosiphon or float valve use
     '''
     return None
+
 
 def evaporation_today(crop, day):
     '''
