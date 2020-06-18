@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+{% load static %}
+{% load l10n %}
+<h1>{{plant.name}}</h1>
+<table>
+  <tr>
+    <th>Klant</th>
+    <th>{{factuur.Klant_ID}}</th>
+  </tr>
+  <tr>
+    <td>Datum</td>
+    <td>{{ factuur.Date|date:"D d/m/Y G:i" }}</td>
+  </tr>
+</table>
+
+<br>
+<br>
+<h2>Order</h2>
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Aantal</th>
+    <th>Prijs</th>
+  </tr>
+  {% for order in factuur.Orders.all %}
+  <tr>
+    <td>{{order.Voorraad_ID}}</td>
+    <td>{{order.Amount}}</td>
+    <td>SRD {{order.Prijs |floatformat:2}}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>Subotaal</td>
+    <td>
+    </td>
+    <td>SRD {{factuur.Subtotal |floatformat:2}}</td>
+  </tr>
+  <tr>
+    <td>Korting</td>
+    <td>{{factuur.Korting_percent}} %</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Belasting</td>
+    <td>8%</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Totaal</td>
+    <td></td>
+    <td>SRD {{factuur.Total |floatformat:2}}</td>
+  </tr>
+</table>
+
+
+{% endblock %}

@@ -3,8 +3,9 @@ from datetime import datetime
 import statsmodels.api as sm
 from numpy import array
 
+import seaborn as sns
 
-def crop_factor(crop, day):
+def crop_factor(day):
     '''
     Returns the crop factor(Kc) of a given crop and how long it's in the ground.
     parameters:
@@ -63,3 +64,38 @@ def evaporation_today(crop, day):
     return None
 
 
+
+
+
+# IGNORE
+# with open("./data/cropdata.json", "r") as cropfile:
+#         data = json.load(cropfile)
+
+# for k, v in data:
+#     self = v
+#     initial = [[], []]
+#     for i in range(self.initial_length):
+#         initial[0].append(i)
+#         initial[1].append(self.initial_kc)
+
+#     interpolate = [[], []]
+#     for i in range(self.initial_length, self.initial_length + self.interpolate_length):
+#         interpolate[0].append(i)
+#         interpolate[1].append(self.crop_factor(i))
+
+#     mid = [[], []]
+#     start = self.initial_length + self.interpolate_length
+#     for i in range(start, start + self.mid_length):
+#         mid[0].append(i)
+#         mid[1].append(self.mid_kc)
+
+#     end=[[], []]
+#     start += self.end_length
+#     for i in range(start, start + self.end_length):
+#         mid[0].append(i)
+#         mid[1].append(self.end_kc)
+#     sns.lineplot(x=initial[0], y=initial[1])
+#     sns.lineplot(x=interpolate[0], y=interpolate[1])
+#     sns.lineplot(x=mid[0], y=mid[1])
+#     sns.lineplot(x=end[0], y=end[1])
+#     plt.show()

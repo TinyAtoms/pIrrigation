@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+{% load static %}
+{% load l10n %}
+<h1>{{plant.name}}</h1>
+<table>
+  <tr>
+    <th>Stage</th>
+    <th>Length</th>
+    <th>Crop Factor</th>
+  </tr>
+  <tr>
+    <td>Initial</td>
+    <td>{{plant.initial_length}}</td>
+    <td>{{plant.initial_kc}}</td>
+  </tr>
+
+  <tr>
+    <td>Growth</td>
+    <td>{{plant.interpolate_length}}</td>
+    <td>{{plant.initial_kc}} - {{plant.mid_kc}}</td>
+  </tr>
+
+  <tr>
+    <td>Mid</td>
+    <td>{{plant.mid_length}}</td>
+    <td>{{plant.mid_kc}}</td>
+  </tr>
+
+  <tr>
+    <td>Mid</td>
+    <td>{{plant.end_length}}</td>
+    <td>{{plant.end_kc}}</td>
+  </tr>
+
+</table>
+
+
+{% endblock %}
