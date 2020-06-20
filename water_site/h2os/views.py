@@ -15,6 +15,7 @@ def home(request):
 
 class PlantDetailView(generic.DetailView):
     model = Plant
+    ## example of how to add things to context. ignore. // TODO: remove when done
     # def get_context_data(self, **kwargs):
     #     # Call the base implementation first to get the context
     #     context = super(FactuurDetailView, self).get_context_data(**kwargs)

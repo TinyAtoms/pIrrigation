@@ -23,7 +23,7 @@ class Plant_group(models.Model):  # want to make this groups
     last_irrigated = models.DateTimeField()
 
     def __str__(self):
-        return self.loc_id
+        return f"Group {self.loc_id}"
 
     def get_absolute_url(self):  # when you're gonna implement the detail view
         """Returns the url to access a particular  instance."""
@@ -31,7 +31,7 @@ class Plant_group(models.Model):  # want to make this groups
 
     class Meta:
         db_table = "Plantgroup"
-        verbose_name_plural = "Plantgroupen"
+        verbose_name_plural = "Plantgroups"
 
 
 class Plant(models.Model):
@@ -54,7 +54,7 @@ class Plant(models.Model):
 
     class Meta:
         db_table = "Plant"
-        verbose_name_plural = "Planten"
+        verbose_name_plural = "Plants"
 
     def crop_factor(self, day):
         '''
