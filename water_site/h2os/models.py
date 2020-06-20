@@ -25,13 +25,13 @@ class Plant_group(models.Model):  # want to make this groups
     def __str__(self):
         return self.loc_id
 
-    def get_absolute_url(self):  # when you're gonna implement the detail view
+    def get_absolute_url(self):  # when you're going to implement the detail view
         """Returns the url to access a particular  instance."""
         return reverse('plant-group-detail', args=[str(self.loc_id)])
 
     class Meta:
         db_table = "Plantgroup"
-        verbose_name_plural = "Plantgroupen"
+        verbose_name_plural = "Plantgroepen"
 
 
 class Plant(models.Model):
@@ -48,7 +48,7 @@ class Plant(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):  # when you're gonna implement the detail view
+    def get_absolute_url(self):  # when you're going to implement the detail view
         """Returns the url to access a particular  instance."""
         return reverse('plant-detail', args=[str(self.id)])
 
