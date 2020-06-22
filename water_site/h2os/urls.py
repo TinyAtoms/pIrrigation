@@ -2,7 +2,11 @@ from django.urls import path
 
 from . import views
 
+app_name = 'h2os'
+
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('factuur/<int:pk>', views.PlantDetailView.as_view(), name='plant-detail'),
+    path('groups/', views.group_list, name='group_list'),
+    path('plants/', views.plant_list, name='plant_list'),
+    path('plants/<int:pk>/', views.PlantDetailView.as_view(), name='plant-detail'),
+    #wip path('group/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),
 ]

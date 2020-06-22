@@ -5,12 +5,13 @@ from django.http import HttpResponse
 from .models import Plant_group, Plant
 
 
-def home(request):
+def group_list(request):
     all_groups = Plant_group.objects.all().order_by('loc_id')
-    return render(request, 'h2os/home.html', {'groups': all_groups} )
+    return render(request, 'h2os/group_list.html', {'groups': all_groups} )
 
-#def home(request):
- #   return HttpResponse("Hello, world. You're at the h2os application homepage.")
+def plant_list(request):
+    all_plants = Plant.objects.all().order_by('id')
+    return render(request, 'h2os/plant_list.html', {'plants': all_plants} )
 
 
 class PlantDetailView(generic.DetailView):
@@ -23,3 +24,11 @@ class PlantDetailView(generic.DetailView):
     #     # context["beforetax"] = context["factuur"].Subtotal - context["korting"]
     #     # context["tax"] = context["beforetax"] * 0.08
     #     return context
+    
+
+'''
+def article_detail(request, slug):
+    # return HttpResponse(slug)
+    plant = Plant.objects.get(id=slug)
+    return render(request, 'h2os/plant_detail.html', { 'plant': plant })
+    '''

@@ -8,7 +8,7 @@ t1 = datetime.time(7, 0, 0)
 t2 = datetime.time(17, 0, 0)
 
 
-class Plant_group(models.Model):  # want to make this groups
+class Plant_group(models.Model):  # want to make this group
     # unique, since only one group per id
     loc_id = models.IntegerField(unique=True)
     plant = models.OneToOneField(
@@ -23,7 +23,7 @@ class Plant_group(models.Model):  # want to make this groups
     last_irrigated = models.DateTimeField()
 
     def __str__(self):
-        return f"Group {self.loc_id}"
+        return self.loc_id
 
     def get_absolute_url(self):  # when you're going to implement the detail view
         """Returns the url to access a particular  instance."""

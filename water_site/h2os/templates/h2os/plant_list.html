@@ -1,0 +1,13 @@
+
+{% extends "base_generic.html" %}
+{% block content %}
+
+<h1>This is the list overview of all plants.</h1>
+        <p>Welcome to this page.</p>
+        <div class = 'plants'>
+            {% for plant in plants %}
+            <div class = 'plant'> 
+                <p><a href="{% url 'h2os:plant-detail' plant.pk %}">{{plant.id}}. {{plant.name}}</a></p>
+            </div>
+{% endfor %}
+{% endblock %}
