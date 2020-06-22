@@ -9,7 +9,7 @@
         <div class = 'groups'>
             {% for group in groups %}
             <div class = 'group'> 
-                <h2>{{group.loc_id}}. {{group.plant_name}}</h2>
+                <h2>{{group.loc_id}}. {{group.plant}}</h2>
                 <p>This plant is located at patch number {{group.loc_id}}.<br>
                     This plant is in growth stage {{group.growth_stage}} on day {{group.growth_day}}.<br>
                     Last watered at {{group.last_irrigated}} for the amount of x liters. <br>
