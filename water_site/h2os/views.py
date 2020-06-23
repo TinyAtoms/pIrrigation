@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from .models import Plant_group, Plant
+from . import forms 
 
 
 def group_list(request):
@@ -25,10 +26,12 @@ class PlantDetailView(generic.DetailView):
     #     # context["tax"] = context["beforetax"] * 0.08
     #     return context
     
-
-'''
-def article_detail(request, slug):
-    # return HttpResponse(slug)
-    plant = Plant.objects.get(id=slug)
-    return render(request, 'h2os/plant_detail.html', { 'plant': plant })
-    '''
+def group_create(request):
+    if request.method == 'POST':
+        form = forms.CreatePlantGroup(request.POST, request.FILES)
+        if form.is_valid():
+            return redirect('h2os:group_list')
+            #save to db
+    else:
+        form = forms.CreatePlantGroup()
+    return render(request, 'h2os/group_create.html', {'form':form})
