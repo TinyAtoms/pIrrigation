@@ -10,6 +10,18 @@
 
 </head>
 <body>
+  <header>
+    <nav>
+      <ul>
+          <li>
+              <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit">Logout</button>
+              </form>
+          </li>
+      </ul>
+  </nav>
+  </header>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
