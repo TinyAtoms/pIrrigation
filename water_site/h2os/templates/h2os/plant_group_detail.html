@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+{% load static %}
+{% load l10n %}
+
+
+<h2>{{plant_group.loc_id}}. {{plant_group.plant}}</h2>
+<p>This plant is located at patch number {{plant_group.loc_id}}.<br>
+    This plant is in growth stage {{plant_group.growth_stage}} on day {{plant_group.growth_day}}.<br>
+    Last watered at {{plant_group.last_irrigated}} for the amount of x liters. <br>
+    Irrigation times are set at {{plant_group.water_t1}} and {{plant_group.water_t2}} .
+</p>
+
+
+</div>
+
+
+{% endblock %}
