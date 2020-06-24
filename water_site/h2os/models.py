@@ -49,7 +49,7 @@ class Pan_data(models.Model):
             self.system_change += 100
         self.last_level = new_level
         self.save()
-
+    @property
     def evaporated_today(self):
         '''
         returns how much water evaporated today
