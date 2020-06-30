@@ -9,8 +9,8 @@ def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            #add login later
+            user = form.save()
+            login(request, user)
             return redirect('h2os:group_list')
     else:
         form = UserCreationForm()
@@ -22,8 +22,12 @@ def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('h2os:group_list')
+            user = form.get_user()
+            login(request, user)
+            if 'next' in request.POST:
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('h2os:group_list')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form':form})
