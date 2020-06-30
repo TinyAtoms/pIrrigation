@@ -1,9 +1,90 @@
 from django.db import models
 from django.urls import reverse
 import datetime
+from .hardware import waterlevel, water_pan
 
-STAGES = [('initial', 'Initial planting stage'), ('interpolate',
-                                                  'Development stage'), ('mid', 'Mature state'), ('end', 'Harvest state')]
+
+class Pan_data(models.Model):
+    '''
+    This is the model that tracks how much water gets evaporated. It logs the waterlevel at the start of the day and
+    continues to keep track of the latest waterlevel. 
+    it should get scheduled in ./scheduling.py
+    '''
+    id = models.IntegerField(primary_key=True)
+    date = models.DateTimeField(auto_now=True)
+    start_level = models.FloatField()
+    last_level = models.FloatField()
+    system_change = models.FloatField()
+
+    def __str__(self):
+        return f"{self.date}"
+
+    def get_absolute_url(self):  # when you're going to implement the detail view
+        """Returns the url to access a particular  instance. For detailfiews and such"""
+        return reverse('plant-detail', args=[str(self.date)])
+
+    class Meta:
+        '''Some extra options'''
+        db_table = "Pan_data"
+        verbose_name_plural = "Pan_data"
+
+    @classmethod
+    def create(cls):
+        '''This sets the startlevel on creation'''
+        start = waterlevel()
+        data = cls(start_level=start, last_level=start)
+        return data
+
+    def log(self):
+        '''
+        Measures current waterlevel, adds water when below a treshold and keeps track of autosiphon and relay use. 
+        needs to be scheduled in scheduling.py
+        '''
+        new_level = waterlevel()
+        # should call a function that measures waterlevel
+        if abs(new_level - self.last_level) > 100:  # ml
+            self.system_change -= 100
+        if new_level < 100:  # TODO: set actual min treshold level here
+            water_pan()
+            self.system_change += 100
+        self.last_level = new_level
+        self.save()
+    @property
+    def evaporated_today(self):
+        '''
+        returns how much water evaporated today
+        '''
+        return (self.last_level - self.start_level) + self.system_change
+
+
+class Water_usage(models.Model):
+    '''
+    This keeps track of past water usage of groups
+    '''
+    id = models.IntegerField(primary_key=True)
+    group = models.OneToOneField("Plant_group", on_delete=models.CASCADE, unique=True)
+    usage = models.FloatField(verbose_name="Water usage(L)")
+    date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        '''How this gets named on the website'''
+        return str(self.id)
+
+    def get_absolute_url(self):  # when you're gonna implement the detail view
+        """Returns the url to access a particular  instance."""
+        return reverse('water-detail', args=[str(self.id)])
+
+    class Meta:
+        db_table = "Water_Usage"
+        verbose_name_plural = "Water_usage"
+
+
+STAGES = [
+    ('initial', 'Initial planting stage'),
+    ('interpolate', 'Development stage'),
+    ('mid', 'Mature state'),
+    ('end', 'Harvest state')
+]
 t1 = datetime.time(7, 0, 0)
 t2 = datetime.time(17, 0, 0)
 
@@ -16,14 +97,14 @@ class Plant_group(models.Model):  # want to make this group
     growth_stage = models.CharField(
         max_length=20, choices=STAGES, default='initial')
     growth_day = models.CharField(max_length=4)
-    distance = models.FloatField()
+    area = models.FloatField()  # m^2
     water_flowrate = models.FloatField()
     water_t1 = models.TimeField(default=t1)
     water_t2 = models.TimeField(default=t2)
     last_irrigated = models.DateTimeField()
 
     def __str__(self):
-        return self.loc_id
+        return f"Group {self.loc_id}"
 
     def get_absolute_url(self):  # when you're going to implement the detail view
         """Returns the url to access a particular  instance."""
@@ -32,6 +113,24 @@ class Plant_group(models.Model):  # want to make this group
     class Meta:
         db_table = "Plantgroup"
         verbose_name_plural = "Plantgroups"
+
+    def water_now(self):
+        '''
+        This waters the group. Needs to be scheduled in scheduling.py
+        '''
+        evaporated = Pan_data.objects.all()[-1].evaporated_today()
+        water_requirement = evaporated * \
+            self.plant.crop_factor(self.growth_day) * self.distance * 1
+        # todo: add pan factor to the equation
+        temp_now = datetime.datetime.now()
+        now = datetime.time(temp_now.hour, temp_now.minute)
+        if now >= self.water_t2:
+            water_requirement -= Water_usage.objects.filter(
+                group=self)[-1].usage
+        relay_timer = water_requirement / self.water_flowrate
+        water_group(self.loc_id, relay_timer)
+        usage = Water_usage(group=self, usage=water_requirement)
+        usage.save()
 
 
 class Plant(models.Model):
@@ -76,21 +175,3 @@ class Plant(models.Model):
             return self.mid_kc
         else:
             return self.end_kc
-
-
-class Water_usage(models.Model):  # want to make this groups
-    # unique, since only one group per id
-    id = models.IntegerField(primary_key=True)
-    group = models.OneToOneField("Plant_group", on_delete=models.CASCADE)
-    usage = models.FloatField(verbose_name="Water usage(L)")
-
-    def __str__(self):
-        return str(self.id)
-
-    def get_absolute_url(self):  # when you're gonna implement the detail view
-        """Returns the url to access a particular  instance."""
-        return reverse('water-detail', args=[str(self.id)])
-
-    class Meta:
-        db_table = "Water_Usage"
-        verbose_name_plural = "Water_usage"

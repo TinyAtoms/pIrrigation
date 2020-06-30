@@ -15,6 +15,8 @@ def plant_list(request):
     all_plants = Plant.objects.all().order_by('id')                         # Puts all plant objects in 'id' order in array
     return render(request, 'h2os/plant_list.html', {'plants': all_plants} ) # Sends array to html for display
 
+class Plant_groupDetailView(generic.DetailView):
+    model = Plant_group
 
 class PlantDetailView(generic.DetailView):
     model = Plant
