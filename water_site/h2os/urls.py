@@ -16,7 +16,7 @@ urlpatterns = [
     # wip path('group/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),
 ]
 
-now = datetime.now() + timedelta(minutes=5) 
+now = datetime.now() + timedelta(minutes=1) 
 if not Task.objects.filter(verbose_name="group_watering").exists():
     group_watering(schedule=now, repeat=Task.DAILY, verbose_name="group_watering")
 if not Task.objects.filter(verbose_name="pan_checker").exists():

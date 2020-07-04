@@ -11,3 +11,7 @@
 - [X] plant data as model  
 - [X] GROUP: Rethink float valve idea   
 - [X] Detailview with editor  
+
+# Bugs 
+## Scheduling
+The tasks are scheduled, but don't actually run. I have no idea why. Something to expllore in the morning
