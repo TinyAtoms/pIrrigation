@@ -1,7 +1,7 @@
 # TODOs  
-- [ ] Sagar: Make python script to schedule crop jobs to water and to measure  
 - [ ] Sagar: Make function to chart past water expenditure, ET, crop factor  
-- [ ] Sagar: Determine pan factor function  
+- [ ] GROUP: Rethink the plantgroup.water_now function.  
+
 
 
 # Finished
@@ -11,7 +11,8 @@
 - [X] plant data as model  
 - [X] GROUP: Rethink float valve idea   
 - [X] Detailview with editor  
+- [X] Make python script to schedule crop jobs to water and to measure 
+- [X]  Determine pan factor function   
 
-# Bugs 
-## Scheduling
-The tasks are scheduled, but don't actually run. I have no idea why. Something to expllore in the morning
+# HOW TO RUN THIS:
+so you do a `manage.py runserver`, and you schedule `python manage.py process_tasks -duration=300` to be run every 5 mins, in cron or in windows task scheduler

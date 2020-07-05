@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 import datetime
-from .hardware import waterlevel, water_pan
+from .hardware import waterlevel, water_pan, water_group
 
 
 class Pan_data(models.Model):
@@ -14,10 +14,10 @@ class Pan_data(models.Model):
     date = models.DateTimeField(auto_now=True)
     start_level = models.FloatField()
     last_level = models.FloatField()
-    system_change = models.FloatField()
+    system_change = models.FloatField(default=0)
 
     def __str__(self):
-        return f"{self.date}"
+        return f"{self.date} waterlevel"
 
     def get_absolute_url(self):  # when you're going to implement the detail view
         """Returns the url to access a particular  instance. For detailfiews and such"""
@@ -49,6 +49,7 @@ class Pan_data(models.Model):
             self.system_change += 100
         self.last_level = new_level
         self.save()
+
     @property
     def evaporated_today(self):
         '''
@@ -62,7 +63,7 @@ class Water_usage(models.Model):
     This keeps track of past water usage of groups
     '''
     id = models.IntegerField(primary_key=True)
-    group = models.OneToOneField("Plant_group", on_delete=models.CASCADE, unique=True)
+    group = models.ForeignKey("Plant_group", on_delete=models.CASCADE)
     usage = models.FloatField(verbose_name="Water usage(L)")
     date = models.DateTimeField(auto_now=True)
 
@@ -96,7 +97,7 @@ class Plant_group(models.Model):  # want to make this group
         "Plant", on_delete=models.PROTECT, blank=True, null=True)
     growth_stage = models.CharField(
         max_length=20, choices=STAGES, default='initial')
-    growth_day = models.CharField(max_length=4)
+    growth_day = models.IntegerField()
     area = models.FloatField()  # m^2
     water_flowrate = models.FloatField()
     water_t1 = models.TimeField(default=t1)
@@ -118,15 +119,20 @@ class Plant_group(models.Model):  # want to make this group
         '''
         This waters the group. Needs to be scheduled in scheduling.py
         '''
-        evaporated = Pan_data.objects.all()[-1].evaporated_today()
+        # DEBUG: the flow of this needs to be thought through
+        evaporated = Pan_data.objects.latest('date').evaporated_today
         water_requirement = evaporated * \
-            self.plant.crop_factor(self.growth_day) * self.distance * 1
+            self.plant.crop_factor(self.growth_day) * self.area * 1
         # todo: add pan factor to the equation
         temp_now = datetime.datetime.now()
         now = datetime.time(temp_now.hour, temp_now.minute)
         if now >= self.water_t2:
-            water_requirement -= Water_usage.objects.filter(
-                group=self)[-1].usage
+            try:  # this is so that if the system was used for the first time after T1 time
+                water_requirement -= Water_usage.objects.get(
+                    group=self).usage
+            except:
+                pass
+
         relay_timer = water_requirement / self.water_flowrate
         water_group(self.loc_id, relay_timer)
         usage = Water_usage(group=self, usage=water_requirement)

@@ -1,9 +1,10 @@
 from django.urls import path
 from datetime import datetime, timedelta
+import pysnooper
 
 from . import views
 from background_task.models import Task
-from .scheduling import pan_checker, group_watering
+from .tasks import pan_checker, group_watering
 app_name = 'h2os'
 
 urlpatterns = [
@@ -16,10 +17,12 @@ urlpatterns = [
     # wip path('group/<int:pk>', views.GroupDetailView.as_view(), name='group-detail'),
 ]
 
-now = datetime.now() + timedelta(minutes=1) 
+
+
+# this schedules the tasks when the system is run for the first time
 if not Task.objects.filter(verbose_name="group_watering").exists():
-    group_watering(schedule=now, repeat=Task.DAILY, verbose_name="group_watering")
+    group_watering(schedule=timedelta(seconds=10), repeat=Task.DAILY, verbose_name="group_watering")
 if not Task.objects.filter(verbose_name="pan_checker").exists():
-    pan_checker(schedule=now, repeat=Task.DAILY, verbose_name="pan_checker")
+    pan_checker(schedule=timedelta(seconds=10), repeat=Task.DAILY, verbose_name="pan_checker")
 
 

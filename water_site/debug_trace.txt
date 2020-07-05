@@ -1,0 +1,167 @@
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+11:17:59.100783 line        47         for pg in Plant_group.objects.all():
+New var:....... pg = <Plant_group: Group 2>
+11:17:59.105780 line        48             t1 = pg.water_t1
+New var:....... t1 = datetime.time(17, 0)
+11:17:59.106780 line        49             t2 = pg.water_t2
+New var:....... t2 = datetime.time(17, 0)
+11:17:59.108780 line        50             today = datetime.today()
+New var:....... today = datetime.datetime(2020, 7, 5, 11, 17, 59, 109781)
+11:17:59.109780 line        51             pg_id = pg.loc_id
+New var:....... pg_id = 2
+11:17:59.110778 line        52             today.replace(hour=t1.hour, minute=t1.minute)
+11:17:59.111777 line        53             water_time(pg_id, schedule=today)
+11:17:59.301659 line        54             today.replace(hour=t2.hour, minute=t2.minute)
+11:17:59.302658 line        55             water_time(pg_id, schedule=today)
+11:17:59.313651 line        47         for pg in Plant_group.objects.all():
+Modified var:.. pg = <Plant_group: Group 3>
+11:17:59.314651 line        48             t1 = pg.water_t1
+11:17:59.315651 line        49             t2 = pg.water_t2
+11:17:59.315651 line        50             today = datetime.today()
+Modified var:.. today = datetime.datetime(2020, 7, 5, 11, 17, 59, 316649)
+11:17:59.316649 line        51             pg_id = pg.loc_id
+Modified var:.. pg_id = 3
+11:17:59.317648 line        52             today.replace(hour=t1.hour, minute=t1.minute)
+11:17:59.318648 line        53             water_time(pg_id, schedule=today)
+11:17:59.332639 line        54             today.replace(hour=t2.hour, minute=t2.minute)
+11:17:59.333639 line        55             water_time(pg_id, schedule=today)
+11:17:59.345632 line        47         for pg in Plant_group.objects.all():
+Modified var:.. pg = <Plant_group: Group 1>
+11:17:59.346632 line        48             t1 = pg.water_t1
+Modified var:.. t1 = datetime.time(11, 20)
+11:17:59.348629 line        49             t2 = pg.water_t2
+Modified var:.. t2 = datetime.time(11, 17)
+11:17:59.349633 line        50             today = datetime.today()
+Modified var:.. today = datetime.datetime(2020, 7, 5, 11, 17, 59, 351629)
+11:17:59.351629 line        51             pg_id = pg.loc_id
+Modified var:.. pg_id = 1
+11:17:59.353629 line        52             today.replace(hour=t1.hour, minute=t1.minute)
+11:17:59.355624 line        53             water_time(pg_id, schedule=today)
+11:17:59.369616 line        54             today.replace(hour=t2.hour, minute=t2.minute)
+11:17:59.369616 line        55             water_time(pg_id, schedule=today)
+11:17:59.385606 line        47         for pg in Plant_group.objects.all():
+Elapsed time: 00:00:00.285823
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 2
+11:17:59.641867 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 2>
+11:17:59.650862 line        37         plantgroup.water_now()
+11:17:59.658861 exception   37         plantgroup.water_now()
+Exception:..... NameError: name 'water_group' is not defined
+Elapsed time: 00:00:00.017990
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 2
+11:17:59.832368 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 2>
+11:17:59.836369 line        37         plantgroup.water_now()
+11:17:59.842364 exception   37         plantgroup.water_now()
+Exception:..... NameError: name 'water_group' is not defined
+Elapsed time: 00:00:00.010994
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 3
+11:17:59.967841 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 3>
+11:17:59.971840 line        37         plantgroup.water_now()
+11:17:59.979834 exception   37         plantgroup.water_now()
+Exception:..... NameError: name 'water_group' is not defined
+Elapsed time: 00:00:00.012993
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 3
+11:18:00.086001 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 3>
+11:18:00.092997 line        37         plantgroup.water_now()
+11:18:00.130979 exception   37         plantgroup.water_now()
+Exception:..... NameError: name 'water_group' is not defined
+Elapsed time: 00:00:00.046971
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:18:00.199938 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:18:00.205928 line        37         plantgroup.water_now()
+11:18:00.215921 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.016984
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:18:00.337544 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:18:00.341542 line        37         plantgroup.water_now()
+11:18:00.348537 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.011992
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 2
+11:18:47.650055 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 2>
+11:18:47.657050 line        37         plantgroup.water_now()
+Elapsed time: 00:00:00.027982
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 2
+11:18:47.768981 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 2>
+11:18:47.773978 line        37         plantgroup.water_now()
+11:18:47.782972 exception   37         plantgroup.water_now()
+Exception:..... django.db.utils.IntegrityError: UNIQUE constraint failed: Water_Usage.group_id
+Elapsed time: 00:00:00.016989
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 3
+11:18:48.136753 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 3>
+11:18:48.142750 line        37         plantgroup.water_now()
+Elapsed time: 00:00:00.024983
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 3
+11:18:48.261676 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 3>
+11:18:48.273670 line        37         plantgroup.water_now()
+11:18:48.284662 exception   37         plantgroup.water_now()
+Exception:..... django.db.utils.IntegrityError: UNIQUE constraint failed: Water_Usage.group_id
+Elapsed time: 00:00:00.029980
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:18:48.676416 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:18:48.680415 line        37         plantgroup.water_now()
+11:18:48.688409 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.012996
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:18:48.837317 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:18:48.841315 line        37         plantgroup.water_now()
+11:18:48.850308 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.013992
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 2
+11:29:01.262902 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 2>
+11:29:01.269897 line        37         plantgroup.water_now()
+11:29:01.277895 exception   37         plantgroup.water_now()
+Exception:..... ValueError: Cannot assign "2": "Water_usage.group" must be a "Plant_group" instance.
+Elapsed time: 00:00:00.016989
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 3
+11:29:01.478765 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 3>
+11:29:01.483762 line        37         plantgroup.water_now()
+11:29:01.491757 exception   37         plantgroup.water_now()
+Exception:..... ValueError: Cannot assign "3": "Water_usage.group" must be a "Plant_group" instance.
+Elapsed time: 00:00:00.014991
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:29:01.780578 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:29:01.784574 line        37         plantgroup.water_now()
+11:29:01.792570 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.012992
+Source path:... C:\Users\MassiveAtoms\Desktop\multilingual_programming\watering\water_site\h2os\tasks.py
+New var:....... pg_id = 1
+11:29:01.919492 line        36         plantgroup = Plant_group.objects.get(loc_id=pg_id)
+New var:....... plantgroup = <Plant_group: Group 1>
+11:29:01.925488 line        37         plantgroup.water_now()
+11:29:01.934488 exception   37         plantgroup.water_now()
+Exception:..... AssertionError: Negative indexing is not supported.
+Elapsed time: 00:00:00.015990
