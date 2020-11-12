@@ -1,6 +1,8 @@
 # import RPi.GPIO as GPIO
+from gpiozero import DistanceSensor
 import time
 from datetime import datetime, timedelta
+
 
 
 def sense_distance():
@@ -32,9 +34,15 @@ def sense_distance():
     distance = diff * 343
     return distance
 
-
+def higherlevel_distance():
+    sensor = DistanceSensor(23,24)
+    distance = sensor.distance * 1000
+    return distance
 
 
 if __name__ == "__main__":
     d = sense_distance()
     print(f"distance is {d} mm or {d/1000} m")
+    print("Trying higher level function:")
+    d2 = higherlevel_distance()
+    print(f"distance is {d2} mm or {d2/1000} m")
